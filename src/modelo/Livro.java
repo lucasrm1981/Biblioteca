@@ -2,17 +2,18 @@ package modelo;
 
 public class Livro {
 
-    private String id_livro;
-    private String titulo;
-    private String autor;
-    private String categoria;
-    private String editora;
-    private String edicao;
-    private String isbn;
-    private String quantidade;
-    private String status;
-    private String corredor;
-    private String prateleira;
+    private String 
+            id_livro,            
+            titulo,
+            autor,
+            categoria,
+            editora,
+            edicao,
+            isbn,
+            quantidade,
+            status,
+            corredor,
+            prateleira;
     private String[] colunas = new String[]{"ID", "TITULO", "AUTOR", "CATEGORIA","EDITORA" ,"EDICAO","ISBN","QUANTIDADE","STATUS","CORREDOR","PRATELEIRA"};
 
     public Livro() {

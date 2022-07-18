@@ -13,7 +13,12 @@ public class ConnectionDB {
 
     public Connection getConnection() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost/bdlivros", "root", "");
+            String 
+                    DBServer = "jdbc:mysql://localhost/bdlivros",
+                    user = "root",
+                    pass = "";
+            
+            return DriverManager.getConnection(DBServer, user, pass);
         } catch (SQLException excecao) {
             throw new RuntimeException(excecao);
         }

@@ -15,16 +15,17 @@ public class LivroDAO {
 
     private Connection connection;
     Long id_livro;
-    String titulo;
-    String autor;
-    String categoria;
-    String editora;
-    String edicao;
-    String isbn;
     int quantidade;
-    String status;
-    String corredor;
-    String prateleira;
+    String 
+            titulo,
+            autor,
+            categoria,
+            editora,
+            edicao,
+            isbn,
+            status,
+            corredor,
+            prateleira;
 
     public LivroDAO() {
         this.connection = new ConnectionDB().getConnection();

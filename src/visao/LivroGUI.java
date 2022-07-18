@@ -8,7 +8,6 @@ package visao;
 import controlador.LivroDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import modelo.ModelTable;
 import modelo.Livro;
@@ -57,12 +56,14 @@ public class LivroGUI extends javax.swing.JFrame {
         ModelTable modelo = new ModelTable(dados, colunas);
 
         tbListagemLivros.setModel(modelo);
-        tbListagemLivros.getColumnModel().getColumn(0).setPreferredWidth(80);
-        tbListagemLivros.getColumnModel().getColumn(0).setResizable(false);
-        tbListagemLivros.getColumnModel().getColumn(1).setPreferredWidth(250);
+        tbListagemLivros.getColumnModel().getColumn(0).setPreferredWidth(40);// Largura da primeira coluna o ID
+        tbListagemLivros.getColumnModel().getColumn(0).setResizable(false);// Sem redimencionamento
+        tbListagemLivros.getColumnModel().getColumn(1).setPreferredWidth(200);
         tbListagemLivros.getColumnModel().getColumn(1).setResizable(false);
-        tbListagemLivros.getColumnModel().getColumn(2).setPreferredWidth(250);
+        tbListagemLivros.getColumnModel().getColumn(2).setPreferredWidth(200);
         tbListagemLivros.getColumnModel().getColumn(2).setResizable(false);
+        tbListagemLivros.getColumnModel().getColumn(3).setPreferredWidth(200);
+        tbListagemLivros.getColumnModel().getColumn(3).setResizable(false);
         tbListagemLivros.getTableHeader().setReorderingAllowed(false);
         //  tbListagemUsuario.setAutoResizeMode(tbListagemUsuario.AUTO_RESIZE_ALL_COLUMNS);
         // tbListagemUsuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -127,10 +128,10 @@ public class LivroGUI extends javax.swing.JFrame {
         txtPrateleira = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(1200, 600));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("LIVROS");
+        jLabel1.setText("GERENCIADOR DE LIVROS");
 
         jLabel2.setText("Titulo");
 
@@ -279,7 +280,7 @@ public class LivroGUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addGap(0, 920, Short.MAX_VALUE))
+                        .addGap(0, 1025, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -287,21 +288,23 @@ public class LivroGUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tbnLimpar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDeletar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btnDeletar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5)
-                                            .addComponent(txtTitulo)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtCategoria)
-                                            .addComponent(txtEditora, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                                            .addComponent(txtAutor))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtEditora)
+                                            .addComponent(txtAutor)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel2)
+                                                    .addComponent(jLabel3)
+                                                    .addComponent(jLabel4)
+                                                    .addComponent(jLabel5)
+                                                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel7)
                                             .addComponent(jLabel8)
