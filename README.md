@@ -6,3 +6,7 @@
  Foi adicionado o catch quando digita algo que não seja número cno campo quantidade ele avisa e sai.
  
  Foram adiocnados titulos e icones aos alert
+ 
+ Feita a conversão de algumas strings em maiusculas
+ 
+ Feito redimensionamento de algumas colunas das tabelas
