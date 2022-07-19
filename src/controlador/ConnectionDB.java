@@ -14,9 +14,9 @@ public class ConnectionDB {
     public Connection getConnection() {
         try {
             String 
-                    DBServer = "jdbc:mysql://localhost/bdlivros",
-                    user = "root",
-                    pass = "";
+                    DBServer = "jdbc:mysql://192.168.188.100/biblioteca",
+                    user = "admin",
+                    pass = "admin";
             
             return DriverManager.getConnection(DBServer, user, pass);
         } catch (SQLException excecao) {

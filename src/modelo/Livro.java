@@ -2,8 +2,7 @@ package modelo;
 
 public class Livro {
 
-    private String 
-            id_livro,            
+    private String id_livro,
             titulo,
             autor,
             categoria,
@@ -14,7 +13,8 @@ public class Livro {
             status,
             corredor,
             prateleira;
-    private String[] colunas = new String[]{"ID", "TITULO", "AUTOR", "CATEGORIA","EDITORA" ,"EDICAO","ISBN","QUANTIDADE","STATUS","CORREDOR","PRATELEIRA"};
+
+    private String[] colunas = new String[]{"ID", "TITULO", "AUTOR", "CATEGORIA", "EDITORA", "EDICAO", "ISBN", "QUANTIDADE", "STATUS", "CORREDOR", "PRATELEIRA"};
 
     public Livro() {
     }
@@ -30,7 +30,7 @@ public class Livro {
     public void setId_Livro(String id_livro) {
         this.id_livro = id_livro;
     }
-    
+
     public String getTitulo() {
         return titulo;
     }
@@ -46,7 +46,7 @@ public class Livro {
     public void setAutor(String autor) {
         this.autor = autor;
 
-    }    
+    }
 
     public String getCategoria() {
         return categoria;
@@ -63,48 +63,48 @@ public class Livro {
     public void setEditora(String editora) {
         this.editora = editora;
     }
-    
-     public String getEdicao() {
+
+    public String getEdicao() {
         return edicao;
     }
 
     public void setEdicao(String edicao) {
         this.edicao = edicao;
     }
-    
-     public String getIsbn() {
+
+    public String getIsbn() {
         return isbn;
     }
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-    
-     public String getQuantidade() {
+
+    public String getQuantidade() {
         return quantidade;
     }
 
     public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
-    
-     public String getStatus() {
+
+    public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
     }
-    
-     public String getCorredor() {
+
+    public String getCorredor() {
         return corredor;
     }
 
     public void setCorredor(String corredor) {
         this.corredor = corredor;
     }
-    
-     public String getPrateleira() {
+
+    public String getPrateleira() {
         return prateleira;
     }
 

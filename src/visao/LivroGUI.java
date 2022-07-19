@@ -6,6 +6,7 @@
 package visao;
 
 import controlador.LivroDAO;
+import java.awt.Component;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -58,12 +59,12 @@ public class LivroGUI extends javax.swing.JFrame {
         tbListagemLivros.setModel(modelo);
         tbListagemLivros.getColumnModel().getColumn(0).setPreferredWidth(40);// Largura da primeira coluna o ID
         tbListagemLivros.getColumnModel().getColumn(0).setResizable(false);// Sem redimencionamento
-        tbListagemLivros.getColumnModel().getColumn(1).setPreferredWidth(200);
-        tbListagemLivros.getColumnModel().getColumn(1).setResizable(false);
-        tbListagemLivros.getColumnModel().getColumn(2).setPreferredWidth(200);
-        tbListagemLivros.getColumnModel().getColumn(2).setResizable(false);
-        tbListagemLivros.getColumnModel().getColumn(3).setPreferredWidth(200);
-        tbListagemLivros.getColumnModel().getColumn(3).setResizable(false);
+        tbListagemLivros.getColumnModel().getColumn(1).setPreferredWidth(200);//Largura da segunda coluna
+        tbListagemLivros.getColumnModel().getColumn(1).setResizable(false);// Sem redimencionamento
+        tbListagemLivros.getColumnModel().getColumn(2).setPreferredWidth(200);//Largura da segunda coluna
+        tbListagemLivros.getColumnModel().getColumn(2).setResizable(false);// Sem redimencionamento
+        tbListagemLivros.getColumnModel().getColumn(3).setPreferredWidth(200);//Largura da segunda coluna
+        tbListagemLivros.getColumnModel().getColumn(3).setResizable(false);// Sem redimencionamento
         tbListagemLivros.getTableHeader().setReorderingAllowed(false);
         //  tbListagemUsuario.setAutoResizeMode(tbListagemUsuario.AUTO_RESIZE_ALL_COLUMNS);
         // tbListagemUsuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -82,7 +83,7 @@ public class LivroGUI extends javax.swing.JFrame {
         txtIsbn.setText(tbListagemLivros.getValueAt(tbListagemLivros.getSelectedRow(), 6).toString());
         txtQuantidade.setText(tbListagemLivros.getValueAt(tbListagemLivros.getSelectedRow(), 7).toString());
         txtStatus.setText(tbListagemLivros.getValueAt(tbListagemLivros.getSelectedRow(), 8).toString());
-        txtCorredor.setText(tbListagemLivros.getValueAt(tbListagemLivros.getSelectedRow(), 9).toString());        
+        txtCorredor.setText(tbListagemLivros.getValueAt(tbListagemLivros.getSelectedRow(), 9).toString());
         txtPrateleira.setText(tbListagemLivros.getValueAt(tbListagemLivros.getSelectedRow(), 10).toString());
     }
 
@@ -301,9 +302,9 @@ public class LivroGUI extends javax.swing.JFrame {
                                                     .addComponent(jLabel2)
                                                     .addComponent(jLabel3)
                                                     .addComponent(jLabel4)
-                                                    .addComponent(jLabel5)
-                                                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                                    .addComponent(jLabel5))
+                                                .addGap(0, 227, Short.MAX_VALUE))
+                                            .addComponent(txtTitulo))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel7)
@@ -434,12 +435,12 @@ public class LivroGUI extends javax.swing.JFrame {
 
         // fazendo a validação dos dados
         if ((txtTitulo.getText().isEmpty()) || (txtAutor.getText().isEmpty()) || (txtCategoria.getText().isEmpty()) || (txtEditora.getText().isEmpty())) {
-            JOptionPane.showMessageDialog(null, "Informe valores para os campos");
+            JOptionPane.showMessageDialog(null, "Informe valores para os campos", "Campos Inválidos", JOptionPane.ERROR_MESSAGE);//Icone de Erro
         } else {
             // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao
             objDAO = new LivroDAO();
             objDAO.salvar(objLivro);
-            JOptionPane.showMessageDialog(null, "Livro " + txtTitulo.getText() + " inserido com sucesso! ");
+            JOptionPane.showMessageDialog(null, "Livro " + txtTitulo.getText() + " inserido com sucesso! ", "Cadastro Concluido!", JOptionPane.INFORMATION_MESSAGE);//Icone de Informacao
         }
 
         carregarTable(null);
@@ -471,16 +472,20 @@ public class LivroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tbListagemLivrosMouseClicked
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        objLivro = new Livro();
         objLivro.setId_Livro(txtID_Livro.getText());
 
         // fazendo a validação dos dados
         if ((txtID_Livro.getText().isEmpty())) {
-            JOptionPane.showMessageDialog(null, "Informe valores para os campos");
+            JOptionPane.showMessageDialog(null, "Informe valores para os campos", "Campos Inválidos", JOptionPane.ERROR_MESSAGE);//Icone de Erro
         } else {
-            // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao
-            objDAO = new LivroDAO();
-            objDAO.deletar(objLivro);
-            JOptionPane.showMessageDialog(null, "Livro Removido com Sucesso! ");
+            int i = okcancel("Tem certeza que deseja DELETAR ?");// Passagem do Ok e cancelar para o i
+            if (i == 0) {
+                // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao
+                objDAO = new LivroDAO();
+                objDAO.deletar(objLivro);
+                JOptionPane.showMessageDialog(null, "Livro Removido com Sucesso! ", "Remoção de Livro", JOptionPane.INFORMATION_MESSAGE);//Icone de Informacao
+            }
         }
 
         carregarTable(null);
@@ -501,7 +506,7 @@ public class LivroGUI extends javax.swing.JFrame {
             objDAO = new LivroDAO();
             buscar = true;
             carregarTable(objLivro);
-        }else{
+        } else {
             buscar = false;
             carregarTable(null);
         }
@@ -538,6 +543,12 @@ public class LivroGUI extends javax.swing.JFrame {
         txtStatus.setText(null);
         txtCorredor.setText(null);
         txtPrateleira.setText(null);
+    }
+
+    // Alerta com ok e cancelar
+    public static int okcancel(String theMessage) {
+        int result = JOptionPane.showConfirmDialog((Component) null, theMessage, "Atenção!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);//Icone de pergunta
+        return result;
     }
 
     /**
